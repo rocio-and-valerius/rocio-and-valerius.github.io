@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="de-DE">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-CE4P0FBD10"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-CE4P0FBD10");
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $("head").load("/element/head.html");
+      });
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <div id="logo"></div>
+      <div id="language"></div>
+      <script src="/js/countdown.js"></script>
+      <nav></nav>
+    </header>
+
+    <main>
+      <article class="section">
+        <section>
+          <h2>Event 1</h2>
+          <h3 data-i18n="events_1_title"></h3>
+          <div class="img_container">
+            <img
+              src="/img/church.png"
+              alt="church"
+              class="img_event img_church"
+              loading="lazy"
+              onclick="toggleInfo(this)"
+            />
+            <span class="img_icon"><i class="fa fa-info"></i></span>
+          </div>
+          <div class="img_text" data-i18n="events_1_text_img"></div>
+          <p data-i18n="events_1_text"></p>
+        </section>
+      </article>
+
+      <article class="section">
+        <section>
+          <h2>Event 2</h2>
+          <h3 data-i18n="events_2_title"></h3>
+          <div class="img_container">
+            <img
+              src="/img/cake.png"
+              alt="cake"
+              class="img_event img_cake"
+              loading="lazy"
+              onclick="toggleInfo(this)"
+            />
+            <span class="img_icon"><i class="fa fa-info"></i></span>
+          </div>
+          <div class="img_text" data-i18n="events_2_text_img"></div>
+          <p data-i18n="events_2_text"></p>
+        </section>
+      </article>
+
+      <article class="section">
+        <section>
+          <h2>Event 3</h2>
+          <h3 data-i18n="events_3_title"></h3>
+          <div class="img_container">
+            <img
+              src="/img/convento.png"
+              alt="convento"
+              class="img_event img_convento"
+              loading="lazy"
+              onclick="toggleInfo(this)"
+            />
+            <span class="img_icon"><i class="fa fa-info"></i></span>
+          </div>
+          <div class="img_text" data-i18n="events_3_text_img"></div>
+          <p data-i18n="events_3_text"></p>
+        </section>
+      </article>
+    </main>
+
+    <footer></footer>
+
+    <script>
+      fetch("/element/logo.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("logo").innerHTML = data;
+        });
+    </script>
+
+    <script>
+      fetch("/element/language.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("language").innerHTML = data;
+        });
+    </script>
+
+    <script src="/js/nav.js">
+      defer
+    </script>
+
+    <script>
+      $(function () {
+        $("nav").load("/element/nav.html", function () {
+          highlightActiveNav();
+        });
+        $("footer").load("/element/footer.html");
+      });
+    </script>
+
+    <script>
+      function toggleInfo(img) {
+        const info = img.parentElement.nextElementSibling;
+        const isVisible = info.style.display === "block";
+
+        document
+          .querySelectorAll(".img_text")
+          .forEach((el) => (el.style.display = "none"));
+        if (!isVisible) {
+          info.style.display = "block";
+        }
+      }
+      document.addEventListener("click", function (event) {
+        const isInside = event.target.closest(".img_container");
+        if (!isInside) {
+          document
+            .querySelectorAll(".img_text")
+            .forEach((el) => (el.style.display = "none"));
+        }
+      });
+    </script>
+
+    <script src="/js/language.js"></script>
+  </body>
+</html>

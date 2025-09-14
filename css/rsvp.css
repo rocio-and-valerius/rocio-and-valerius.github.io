@@ -1,0 +1,115 @@
+input {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-1);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px var(--color-shadow);
+  box-sizing: border-box;
+  color: var(--color-1);
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  padding: 1.3vw;
+  width: 75%;
+}
+input:focus {
+  background-color: var(--color-1);
+  color: var(--color-white);
+  outline: none;
+}
+input::placeholder {
+  color: var(--color-color-1);
+  font-family: var(--font-rsvp);
+  font-weight: normal;
+}
+input:focus::placeholder {
+  color: var(--color-2);
+}
+
+select {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-1);
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px var(--color-shadow);
+  color: var(--color-1);
+  font-family: var(--font-rsvp);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  padding: 1.3vw;
+  width: 75%;
+}
+select:invalid {
+  color: var(--color-1);
+  font-family: var(--font-rsvp);
+}
+select:focus {
+  background-color: var(--color-1);
+  color: var(--color-white);
+  outline: none;
+}
+option {
+  color: var(--color-2);
+  padding: 1.3vw;
+}
+select.selected {
+  font-family: var(--font-text);
+  font-weight: bold;
+}
+
+textarea {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-1);
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px var(--color-shadow);
+  color: var(--color-1);
+  font-family: var(--font-text);
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  padding: 1.3vw;
+  width: 75%;
+}
+textarea:focus {
+  background-color: var(--color-1);
+  color: var(--color-white);
+  font-family: var(--font-text);
+  outline: none;
+}
+textarea::placeholder {
+  color: var(--color-1);
+  font-family: var(--font-rsvp);
+  font-weight: normal;
+}
+textarea:focus::placeholder {
+  color: var(--color-2);
+}
+
+button {
+  background-color: var(--color-1);
+  border: 2px solid var(--color-1);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px var(--color-shadow);
+  color: var(--color-white);
+  cursor: pointer;
+  display: block;
+  font-family: var(--font-rsvp);
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0px auto;
+  margin-bottom: 0.75rem;
+  padding: 1.3vw;
+  text-align: center;
+  width: 75%;
+}
+button:hover {
+  background-color: var(--color-2);
+  border: 2px solid var(--color-1);
+  color: var(--color-1);
+}
+
+#status {
+  color: var(--color-1);
+  font-family: var(--font-text);
+}

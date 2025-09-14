@@ -1,0 +1,50 @@
+.faq {
+  margin: 2rem auto;
+  width: 75%;
+}
+.faq details {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-1);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px var(--color-shadow);
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+  text-align: left;
+}
+.faq details[open] {
+  background-color: var(--color-1);
+  box-shadow: 0 2px 5px var(--color-1);
+  color: var(--color-white);
+}
+.faq summary {
+  cursor: pointer;
+  display: flex;
+  font-weight: bold;
+  list-style: none;
+  position: relative;
+  padding-right: 2em;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  color: var(--color-1);
+  content: "▶";
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.5s ease, color 0.5s ease;
+  width: 1em;
+}
+.faq details[open] summary::after {
+  color: var(--color-white);
+  transform: translateY(-50%) rotate(90deg);
+}
+.faq details p {
+  overflow: hidden;
+  text-align: left;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="de-DE">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-CE4P0FBD10"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-CE4P0FBD10");
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $("head").load("/element/head.html");
+      });
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <div id="logo"></div>
+      <div id="language"></div>
+      <script src="/js/countdown.js"></script>
+      <nav></nav>
+    </header>
+
+    <main>
+      <article class="section">
+        <section>
+          <h3>RSPV</h3>
+          <form id="rsvp">
+            <input
+              type="text"
+              name="name"
+              data-i18n-placeholder="rsvp_name"
+              required
+            /><br />
+            <select id="event" name="event" required>
+              <option
+                value=""
+                disabled
+                selected
+                hidden
+                data-i18n="rsvp_event"
+              ></option>
+              <option value="231125" data-i18n="rsvp_event_1"></option>
+              <option value="040426" data-i18n="rsvp_event_2"></option>
+            </select>
+            <br />
+            <select id="response" name="response" required>
+              <option
+                value=""
+                disabled
+                selected
+                hidden
+                data-i18n="rsvp_response"
+              ></option>
+              <option value="Ja" data-i18n="rsvp_response_1"></option>
+              <option value="Nein" data-i18n="rsvp_response_0"></option>
+            </select>
+            <br />
+            <input
+              type="number"
+              name="count"
+              data-i18n-placeholder="rsvp_count"
+              min="0"
+              max="5"
+              required
+            /><br />
+            <textarea
+              name="other"
+              rows="5"
+              cols="20"
+              data-i18n-placeholder="rsvp_other"
+            ></textarea>
+            <br />
+            <input
+              type="text"
+              name="invite_code"
+              data-i18n-placeholder="rsvp_code"
+              required
+            /><br />
+            <button type="submit">
+              <i class="fas fa-envelope"></i>
+              <span data-i18n="rsvp_submit"></span>
+            </button>
+          </form>
+
+          <p id="status"></p>
+
+          <script>
+            $("#rsvp").on("submit", function (e) {
+              e.preventDefault();
+              var data = $(this).serialize();
+
+              $("#status").attr("data-i18n", "rsvp_status_submitting");
+              updateContent(window.currentLangData);
+
+              $.post(
+                "https://script.google.com/macros/s/AKfycbyRxN1Vx-_m1LIPYEzxsZAyWd772cc6xxNoOZg38vZYPe8zvQicJ4XeAQfdAXjO03SmSw/exec",
+                data,
+                null,
+                "json"
+              )
+                .done(function (res) {
+                  if (res.result === "success") {
+                    $("#status").attr("data-i18n", "rsvp_status_success");
+                    updateContent(window.currentLangData);
+                    $("#rsvp")[0].reset();
+                    $("select").each(function () {
+                      $(this).css({
+                        "font-family": "var(--font-rsvp)",
+                        "font-weight": "normal",
+                      });
+                    });
+                  } else {
+                    $("#status").text("Error: " + res.message);
+                  }
+                })
+                .fail(function (err) {
+                  console.error(err);
+                  $("#status").attr("data-i18n", "rsvp_status_failure");
+                  updateContent(window.currentLangData);
+                });
+            });
+          </script>
+        </section>
+      </article>
+
+      <script>
+        const eventSelect = document.getElementById("event");
+
+        eventSelect.addEventListener("change", function () {
+          this.classList.add("selected");
+        });
+        const responseSelect = document.getElementById("response");
+
+        responseSelect.addEventListener("change", function () {
+          this.classList.add("selected");
+        });
+      </script>
+    </main>
+
+    <footer></footer>
+
+    <script>
+      fetch("/element/logo.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("logo").innerHTML = data;
+        });
+    </script>
+
+    <script>
+      fetch("/element/language.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("language").innerHTML = data;
+        });
+    </script>
+
+    <script src="/js/nav.js">
+      defer
+    </script>
+
+    <script>
+      $(function () {
+        $("nav").load("/element/nav.html", function () {
+          highlightActiveNav();
+        });
+        $("footer").load("/element/footer.html");
+      });
+    </script>
+
+    <script src="/js/language.js"></script>
+  </body>
+</html>

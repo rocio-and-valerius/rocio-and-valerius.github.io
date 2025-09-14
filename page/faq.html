@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="de-DE">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-CE4P0FBD10"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-CE4P0FBD10");
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $("head").load("/element/head.html");
+      });
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <div id="logo"></div>
+      <div id="language"></div>
+      <script src="/js/countdown.js"></script>
+      <nav></nav>
+    </header>
+
+    <main>
+      <article class="section">
+        <section class="faq">
+          <h3 data-i18n="faq_title"></h3>
+
+          <details>
+            <summary data-i18n="faq_response_q"></summary>
+            <p data-i18n="faq_response_a"></p>
+          </details>
+
+          <details>
+            <summary data-i18n="faq_rsvp_q"></summary>
+            <p data-i18n="faq_rsvp_a"></p>
+          </details>
+
+          <details>
+            <summary data-i18n="faq_decline_q"></summary>
+            <p data-i18n="faq_decline_a"></p>
+          </details>
+
+          <details>
+            <summary data-i18n="faq_gift_q"></summary>
+            <p data-i18n="faq_gift_a"></p>
+          </details>
+
+          <details>
+            <summary data-i18n="faq_dresscode_q"></summary>
+            <p data-i18n="faq_dresscode_a"></p>
+          </details>
+
+          <details>
+            <summary data-i18n="faq_register_office_q"></summary>
+            <p data-i18n="faq_register_office_a"></p>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2980.572835517703!2d13.084384048325989!3d52.38851361855635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8f5f16f2ce0b7%3A0x1882400e930045c0!2sAlte%20Neuendorfer%20Kirche!5e0!3m2!1sde!2sde!4v1756673288328!5m2!1sde!2sde"
+              width="100%"
+              height="300"
+              style="border: 0; box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3)"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </details>
+
+          <details>
+            <summary data-i18n="faq_germany_q"></summary>
+            <p data-i18n="faq_germany_a"></p>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2655.644293101195!2d8.194583487299866!3d48.27121946775157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790d1015d6d421d%3A0xfb68ef534a55b3e8!2sWebers%20Esszeit%20-%20Christian%20Weber!5e0!3m2!1sde!2sde!4v1756673347632!5m2!1sde!2sde"
+              width="100%"
+              height="300"
+              style="border: 0; box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3)"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </details>
+
+          <details>
+            <summary data-i18n="faq_mexico_q"></summary>
+            <p data-i18n="faq_mexico_a"></p>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.5376952493884!2d-99.16135742508904!3d19.345857143446015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ffda49abe105%3A0x23ab6356ffd10725!2sEl%20Convento!5e0!3m2!1sen!2sde!4v1756059222693!5m2!1sen!2sde"
+              width="100%"
+              height="300"
+              style="border: 0; box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3)"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </details>
+
+          <details>
+            <summary data-i18n="faq_mexico_travel_q"></summary>
+            <p data-i18n="faq_mexico_travel_a"></p>
+          </details>
+
+          <details>
+            <summary data-i18n="faq_end_q"></summary>
+            <p data-i18n="faq_end_a"></p>
+          </details>
+        </section>
+      </article>
+    </main>
+
+    <footer></footer>
+
+    <script>
+      fetch("/element/logo.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("logo").innerHTML = data;
+        });
+    </script>
+
+    <script>
+      fetch("/element/language.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("language").innerHTML = data;
+        });
+    </script>
+
+    <script src="/js/nav.js">
+      defer
+    </script>
+
+    <script>
+      $(function () {
+        $("nav").load("/element/nav.html", function () {
+          highlightActiveNav();
+        });
+        $("footer").load("/element/footer.html");
+      });
+    </script>
+
+    <script src="/js/language.js"></script>
+  </body>
+</html>
