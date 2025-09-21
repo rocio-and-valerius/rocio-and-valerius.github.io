@@ -1,5 +1,5 @@
 // Target date
-const targetDate = new Date("2025-11-07T12:00:00").getTime();
+const targetDate = new Date("2025-11-07T11:00:00").getTime();
 
 let countdownFinished = false;
 
